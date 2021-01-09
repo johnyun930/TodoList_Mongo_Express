@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const app = express();
-mongoose.connect("mongodb://localhost/blog",{ useFindAndModify: false,  useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://johnyun930:Jesus+!@@5+christ@cluster0.umkpc.mongodb.net/test",{ useFindAndModify: false,  useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 app.set('view engine','ejs');
@@ -101,7 +101,7 @@ app.post("/delete",(req,res)=>{
     });
 });
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT||3000,()=>{
     console.log("Server is ");
 })
 
