@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require('dotenv').config();
 const app = express();
-mongoose.connect("mongodb+srv://johnyun930:Jesus+!@@5+christ@cluster0.umkpc.mongodb.net/test",{ useFindAndModify: false,  useNewUrlParser: true, useUnifiedTopology: true });
+console.log(process.env.DB_USERNAME,process.env.DB_PASSWORD);
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.umkpc.mongodb.net/test`,{ useFindAndModify: false,  useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 app.set('view engine','ejs');
